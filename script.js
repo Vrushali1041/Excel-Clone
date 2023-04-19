@@ -4,10 +4,27 @@ const tbody = document.getElementById("table-body");
 const columns = 26;
 const rows = 100;
 let currentCell;
+let cutValue = {};
 // button section
 const boldBtn = document.getElementById("bold-btn");
 const italicBtn = document.getElementById("italic-btn");
 const underlineBtn = document.getElementById("underline-btn");
+
+// Color section
+const textColor = document.getElementById("text-color");
+const bgColor = document.getElementById("bg-color");
+
+const leftAline = document.getElementById("left-aline");
+const centerAline = document.getElementById("center-aline");
+const rightAline = document.getElementById("right-aline");
+
+// font section
+const fontSize = document.getElementById("font-size");
+const fontFamily = document.getElementById("font-family");
+
+const cutBtn = document.getElementById("cut-btn");
+const copyBtn = document.getElementById("copy-btn");
+const pasteBtn = document.getElementById("paste-btn");
 
 
 
@@ -83,3 +100,57 @@ underlineBtn.addEventListener("click", () =>{
     }
     console.log("Underline",currentCell);
 });
+
+// color section
+bgColor.addEventListener("change", () =>{
+    currentCell.style.backgroundColor = bgColor.value;
+});
+textColor.addEventListener("change", () =>{
+    currentCell.style.color = textColor.value;
+});
+
+
+
+leftAline.addEventListener("click", () =>{
+    currentCell.style.textAlign = "left";
+});
+centerAline.addEventListener("click", () =>{
+    currentCell.style.textAlign = "center";
+});
+rightAline.addEventListener("click", () =>{
+    currentCell.style.textAlign = "right";
+});
+
+// font section
+fontSize.addEventListener("change", () =>{
+    currentCell.style.fontSize = fontSize.value;
+});
+
+// font-family section
+fontFamily.addEventListener("change", () =>{
+    currentCell.style.fontFamily = fontFamily.value;
+});
+
+// cut, copy, paste
+cutBtn.addEventListener("change", () =>{
+    console.log("style", currentCell.style);
+    console.log("text", currentCell.innerText);
+    cutValue = {
+        style:currentCell.style,
+        text:currentCell.innerText,
+    }
+});
+
+pasteBtn.addEventListener("change", () =>{
+    currentCell.style = cutValue.style;
+    currentCell.innerText = cutValue.text;
+})
+
+
+// copyBtn.addEventListener("change", () =>{
+//     currentCell.style.fontFamily = fontFamily.value;
+// });
+
+// pasteBtn.addEventListener("change", () =>{
+//     currentCell.style.fontFamily = fontFamily.value;
+// });

@@ -1,7 +1,15 @@
+body{
+    width: 100vh;
+}
 table{
     border-collapse: collapse;
-    width: 620;
+    width: 98vw;
+    overflow: hidden;
 }
 td, th{
     border: 1px solid black;
+    width: 180px;
+}
+td:focus{
+    outline: none;
 }
