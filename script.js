@@ -132,25 +132,26 @@ fontFamily.addEventListener("change", () =>{
 });
 
 // cut, copy, paste
-cutBtn.addEventListener("change", () =>{
-    console.log("style", currentCell.style);
-    console.log("text", currentCell.innerText);
+cutBtn.addEventListener("click", () =>{
+    // console.log("style", currentCell.style);
+    // console.log("text", currentCell.innerText);
     cutValue = {
-        style:currentCell.style,
-        text:currentCell.innerText,
+        style: currentCell.style.cssText,
+        text: currentCell.innerText,
     }
+    currentCell.style = null;
+    currentCell.innerText = null;
 });
 
-pasteBtn.addEventListener("change", () =>{
-    currentCell.style = cutValue.style;
+copyBtn.addEventListener("click", () =>{
+    cutValue = {
+        style: currentCell.style.cssText,
+        text: currentCell.innerText,
+    };
+});
+
+pasteBtn.addEventListener("click", () =>{
+    currentCell.style.cssText = cutValue.style;
     currentCell.innerText = cutValue.text;
-})
+});
 
-
-// copyBtn.addEventListener("change", () =>{
-//     currentCell.style.fontFamily = fontFamily.value;
-// });
-
-// pasteBtn.addEventListener("change", () =>{
-//     currentCell.style.fontFamily = fontFamily.value;
-// });
